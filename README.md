@@ -38,20 +38,16 @@ No API data is used for persistent storage, authentication records, or customer 
 
 ```mermaid
 erDiagram
-    USER_PROFILE ||--o{ LINKED_ACCOUNT : owns
-    USER_PROFILE ||--o{ MFA_METHOD : uses
-    USER_PROFILE ||--o{ VERI_TRANSACTION : authorizes
-    USER_PROFILE ||--o{ BANK_ACCESS : grants
+USER_PROFILE ||--o{ LINKED_ACCOUNT : owns
+USER_PROFILE ||--o{ MFA_METHOD : uses
+USER_PROFILE ||--o{ VERI_TRANSACTION : authorizes
+USER_PROFILE ||--o{ BANK_ACCESS : grants
 
-    USER_PROFILE {
-        int UserProfileId
-        string FullName
-        string Email
-        string Phone
-        string Address
-        decimal Income
-        string Status
-    }
+USER_PROFILE {
+    int UserProfileId
+    string FullName
+    string Email
+}
 
     LINKED_ACCOUNT {
         int LinkedAccountId
