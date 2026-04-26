@@ -49,9 +49,6 @@ USER_PROFILE {
     string FullName
     string Email
     string Phone
-    string Address
-    decimal Income
-    string Status
 }
 
 LINKED_ACCOUNT {
@@ -59,8 +56,6 @@ LINKED_ACCOUNT {
     string BankName
     string AccountNickname
     string AccountType
-    string MaskedAccountNumber
-    string RoutingNumber
     bool IsDefault
 }
 
@@ -69,16 +64,16 @@ MFA_METHOD {
     string MethodName
     string MethodType
     bool IsEnabled
+    bool IsDefault
+    datetime DateAdded
 }
 
 VERI_TRANSACTION {
     int VeriTransactionId
-    string MerchantName
-    string TransactionType
+    string Merchant
     decimal Amount
     string Status
     string RiskLevel
-    string TransactionDate
 }
 
 BANK_ACCESS {
