@@ -38,6 +38,7 @@ No API data is used for persistent storage, authentication records, or customer 
 
 ```mermaid
 erDiagram
+
 USER_PROFILE ||--o{ LINKED_ACCOUNT : owns
 USER_PROFILE ||--o{ MFA_METHOD : uses
 USER_PROFILE ||--o{ VERI_TRANSACTION : authorizes
@@ -47,41 +48,46 @@ USER_PROFILE {
     int UserProfileId
     string FullName
     string Email
+    string Phone
+    string Address
+    decimal Income
+    string Status
 }
 
-    LINKED_ACCOUNT {
-        int LinkedAccountId
-        string BankName
-        string AccountNickname
-        string AccountType
-        string MaskedAccountNumber
-        string RoutingNumber
-        bool IsDefault
-    }
+LINKED_ACCOUNT {
+    int LinkedAccountId
+    string BankName
+    string AccountNickname
+    string AccountType
+    string MaskedAccountNumber
+    string RoutingNumber
+    bool IsDefault
+}
 
-    MFA_METHOD {
-        int MFAMethodId
-        string MethodName
-        string MethodType
-        bool IsEnabled
-    }
+MFA_METHOD {
+    int MFAMethodId
+    string MethodName
+    string MethodType
+    bool IsEnabled
+}
 
-    VERI_TRANSACTION {
-        int VeriTransactionId
-        string MerchantName
-        string TransactionType
-        decimal Amount
-        string Status
-        string RiskLevel
-        DateTime TransactionDate
-    }
+VERI_TRANSACTION {
+    int VeriTransactionId
+    string MerchantName
+    string TransactionType
+    decimal Amount
+    string Status
+    string RiskLevel
+    string TransactionDate
+}
 
-    BANK_ACCESS {
-        int BankAccessId
-        string InstitutionName
-        string AccessLevel
-        bool IsActive
-    }
+BANK_ACCESS {
+    int BankAccessId
+    string InstitutionName
+    string AccessLevel
+    bool IsActive
+}
+```
 
 ## Overview of CRUD Implementation
 
