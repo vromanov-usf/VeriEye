@@ -1,0 +1,56 @@
+﻿@model VeriEye.Models.LinkedAccount
+
+@{
+    ViewData["Title"] = "Add Linked Account";
+}
+
+<section class="container py-5">
+    <div class="content-panel mx-auto" style="max-width:700px;">
+        <h1 class="mb-4">Add Linked Account</h1>
+
+        <form asp-action="Create" method="post">
+
+            <div class="mb-3">
+                <label asp-for="BankName" class="form-label">Bank Name</label>
+                <input asp-for="BankName" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="AccountNickname" class="form-label">Account Nickname</label>
+                <input asp-for="AccountNickname" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="AccountType" class="form-label">Account Type</label>
+                <select asp-for="AccountType" class="form-control">
+                    <option>Checking</option>
+                    <option>Savings</option>
+                    <option>Credit Card</option>
+                    <option>Business</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="MaskedAccountNumber" class="form-label">Masked Account Number</label>
+                <input asp-for="MaskedAccountNumber" class="form-control" placeholder="****1234" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="RoutingNumber" class="form-label">Routing Number</label>
+                <input asp-for="RoutingNumber" class="form-control" placeholder="021000021" />
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="IsDefault" class="form-check-input" />
+                <label asp-for="IsDefault" class="form-check-label">Default Account</label>
+            </div>
+
+            <button type="submit" class="btn btn-glow">Save</button>
+
+            <a asp-action="Index" class="btn btn-soft">
+                Cancel
+            </a>
+
+        </form>
+    </div>
+</section>

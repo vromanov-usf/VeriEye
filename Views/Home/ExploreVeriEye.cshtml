@@ -1,0 +1,206 @@
+﻿@{
+    ViewData["Title"] = "Why VeriEye";
+}
+
+<section class="page-hero">
+    <div class="container-fluid px-5">
+        <p class="kicker">API + FRAUD INTELLIGENCE</p>
+        <h1>Why VeriEye?</h1>
+        <p>
+            VeriEye connects biometric authentication, secure payments, and consumer-finance complaint intelligence
+            to show why stronger identity verification matters.
+        </p>
+    </div>
+</section>
+
+<section class="container-fluid px-5 section-block">
+    <div class="row g-4">
+        <div class="col-lg-4">
+            <div class="panel h-100">
+                <h3>Identity-Based Authentication</h3>
+                <p>
+                    Passwords, PINs, and OTPs verify information. VeriEye supports verifying the actual person
+                    through iris-based biometric authentication.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="panel h-100">
+                <h3>Customer Account Control</h3>
+                <p>
+                    Customers can manage their own VeriEye profile, MFA methods, linked accounts,
+                    default payment account, and institution access.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="panel h-100">
+                <h3>Fraud-Aware Product Design</h3>
+                <p>
+                    VeriEye uses CFPB complaint data to connect the product idea to real consumer finance pain points.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid px-5 section-block">
+    <div class="panel">
+        <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-4">
+            <div>
+                <p class="kicker">LIVE API DATA</p>
+                <h2>Consumer Financial Complaints by Product</h2>
+                <p>
+                    This chart fetches complaint data from the CFPB Consumer Complaint Database API.
+                    It is relevant because financial complaints often involve account access, payment disputes,
+                    credit reporting issues, fraud concerns, and identity verification problems.
+                    VeriEye is designed to reduce these types of friction by making authentication stronger.
+                </p>
+            </div>
+
+            <a class="btn btn-soft" href="https://www.consumerfinance.gov/data-research/consumer-complaints/" target="_blank">
+                View CFPB Source
+            </a>
+        </div>
+
+        <div class="chart-wrap">
+            <canvas id="cfpbChart"></canvas>
+        </div>
+
+        <p id="apiStatus" class="mt-3 text-muted">Loading CFPB complaint data...</p>
+    </div>
+</section>
+
+<section class="container-fluid px-5 section-block">
+    <div class="row g-4">
+        <div class="col-lg-6">
+            <div class="panel h-100">
+                <h2>Why the CFPB chart supports VeriEye</h2>
+                <p>
+                    The CFPB complaint categories show where consumers experience the most friction in financial services.
+                    Products like credit reporting, credit cards, checking accounts, and money transfers are directly tied
+                    to identity, account access, payments, and fraud prevention.
+                </p>
+                <ul>
+                    <li><strong>Credit reporting:</strong> identity errors and disputes can harm consumers.</li>
+                    <li><strong>Credit cards:</strong> unauthorized charges and payment disputes are major risk areas.</li>
+                    <li><strong>Checking accounts:</strong> account access and unauthorized transactions affect trust.</li>
+                    <li><strong>Money transfers:</strong> high-risk payments need stronger authentication.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="panel h-100">
+                <h2>How VeriEye responds</h2>
+                <div class="value-list">
+                    <div><strong>Biometric approval:</strong> confirms the customer before high-risk activity.</div>
+                    <div><strong>Linked account controls:</strong> lets users manage which accounts are connected.</div>
+                    <div><strong>Bank access controls:</strong> lets users remove financial institution access.</div>
+                    <div><strong>Transaction history:</strong> gives customers visibility into VeriEye activity.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        async function loadCfpbChart() {
+            const status = document.getElementById('apiStatus');
+
+            try {
+                const response = await fetch('/api/cfpb/complaint-products');
+
+                if (!response.ok) {
+                    throw new Error('API request failed');
+                }
+
+                const data = await response.json();
+
+                const labels = data.map(x => x.product);
+                const values = data.map(x => x.count);
+
+                const ctx = document.getElementById('cfpbChart');
+
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Complaint Count',
+                            data: values,
+                            backgroundColor: [
+                                '#5268ff',
+                                '#65d4ff',
+                                '#78c2b0',
+                                '#8c6dff',
+                                '#91a0bd',
+                                '#5d978d',
+                                '#6fa8dc',
+                                '#a3b4d4'
+                            ],
+                            borderRadius: 12
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: true }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: { display: true, text: 'Complaint Count' }
+                            },
+                            x: {
+                                ticks: {
+                                    maxRotation: 30,
+                                    minRotation: 20
+                                }
+                            }
+                        }
+                    }
+                });
+
+                status.innerText = 'Source: CFPB Consumer Complaint Database API';
+            }
+            catch (error) {
+                console.error(error);
+                status.innerText = 'Unable to load live CFPB data. Showing fallback demo data.';
+
+                const fallback = [
+                    { product: 'Credit reporting', count: 100 },
+                    { product: 'Credit card', count: 80 },
+                    { product: 'Checking or savings', count: 65 },
+                    { product: 'Money transfer', count: 45 },
+                    { product: 'Mortgage', count: 40 }
+                ];
+
+                const ctx = document.getElementById('cfpbChart');
+
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: fallback.map(x => x.product),
+                        datasets: [{
+                            label: 'Complaint Count',
+                            data: fallback.map(x => x.count),
+                            backgroundColor: ['#5268ff', '#65d4ff', '#78c2b0', '#8c6dff', '#91a0bd'],
+                            borderRadius: 12
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
+                });
+            }
+        }
+
+        loadCfpbChart();
+    </script>
+}

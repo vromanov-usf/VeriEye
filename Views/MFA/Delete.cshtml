@@ -1,0 +1,30 @@
+﻿@model VeriEye.Models.MFAMethod
+
+@{
+    ViewData["Title"] = "Delete MFA Method";
+}
+
+<section class="container py-5">
+    <div class="content-panel mx-auto" style="max-width: 600px;">
+        <h1 class="mb-4">Delete MFA Method</h1>
+
+        <p>Are you sure you want to delete this MFA method?</p>
+
+        <dl class="row">
+            <dt class="col-sm-4">Method Type</dt>
+            <dd class="col-sm-8">@Model.MethodType</dd>
+
+            <dt class="col-sm-4">Enabled</dt>
+            <dd class="col-sm-8">@Model.IsEnabled</dd>
+
+            <dt class="col-sm-4">Default</dt>
+            <dd class="col-sm-8">@Model.IsDefault</dd>
+        </dl>
+
+        <form asp-action="Delete" method="post">
+            <input asp-for="MFAMethodId" type="hidden" />
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a asp-action="Index" class="btn btn-soft">Cancel</a>
+        </form>
+    </div>
+</section>

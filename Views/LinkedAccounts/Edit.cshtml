@@ -1,0 +1,48 @@
+﻿@model VeriEye.Models.LinkedAccount
+
+@{
+    ViewData["Title"] = "Edit Linked Account";
+}
+
+<section class="container py-5">
+    <div class="content-panel mx-auto" style="max-width:700px;">
+        <h1 class="mb-4">Edit Linked Account</h1>
+
+        <form asp-action="Edit" method="post">
+            <input asp-for="LinkedAccountId" type="hidden" />
+
+            <div class="mb-3">
+                <label asp-for="BankName" class="form-label"></label>
+                <input asp-for="BankName" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="AccountNickname" class="form-label"></label>
+                <input asp-for="AccountNickname" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="AccountType" class="form-label"></label>
+                <select asp-for="AccountType" class="form-control">
+                    <option>Checking</option>
+                    <option>Savings</option>
+                    <option>Credit Card</option>
+                    <option>Business</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="MaskedAccountNumber" class="form-label"></label>
+                <input asp-for="MaskedAccountNumber" class="form-control" />
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="IsDefault" class="form-check-input" />
+                <label asp-for="IsDefault" class="form-check-label"></label>
+            </div>
+
+            <button type="submit" class="btn btn-glow">Update</button>
+            <a asp-action="Index" class="btn btn-soft">Cancel</a>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Access VeriEye";
+}
+
+<section class="auth-shell">
+
+    <div class="auth-left">
+        <p class="eyebrow">SECURE ACCESS</p>
+
+        <h1>Access your VeriEye account.</h1>
+
+        <p>
+            Manage linked accounts, payment preferences, authentication history,
+            MFA settings, and secure identity tools.
+        </p>
+    </div>
+
+    <div class="auth-panel">
+
+        <div class="auth-tabs">
+            <a asp-controller="Account"
+               asp-action="Login"
+               class="tab-btn active">
+                Login
+            </a>
+
+            <a asp-controller="Account"
+               asp-action="Signup"
+               class="tab-btn">
+                Sign Up
+            </a>
+        </div>
+
+        <form asp-controller="Account" asp-action="Login" method="post">
+
+            <label>Email</label>
+            <input name="email" type="email" placeholder="you@example.com" />
+
+            <label>Password</label>
+            <input name="password" type="password" placeholder="Enter password" />
+
+            <button type="submit" class="btn-main full-btn">
+                Login
+            </button>
+
+        </form>
+
+    </div>
+
+</section>

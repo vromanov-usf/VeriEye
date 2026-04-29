@@ -1,0 +1,72 @@
+﻿{
+  "summary": {
+    "totalFraudReports": "2.6M+",
+    "totalConsumerLosses": "$12.5B+"
+  },
+  "fraudReportsByCategory": [
+    {
+      "category": "Impostor Scams",
+      "reports": 845000
+    },
+    {
+      "category": "Online Shopping",
+      "reports": 370000
+    },
+    {
+      "category": "Investment Related",
+      "reports": 118000
+    },
+    {
+      "category": "Business & Job Opportunities",
+      "reports": 105000
+    },
+    {
+      "category": "Prizes & Lotteries",
+      "reports": 99000
+    }
+  ],
+  "consumerLossesByYear": [
+    {
+      "year": "2020",
+      "lossesInBillions": 3.4
+    },
+    {
+      "year": "2021",
+      "lossesInBillions": 5.9
+    },
+    {
+      "year": "2022",
+      "lossesInBillions": 8.8
+    },
+    {
+      "year": "2023",
+      "lossesInBillions": 10.0
+    },
+    {
+      "year": "2024",
+      "lossesInBillions": 12.5
+    }
+  ],
+  "identityTheftTrend": [
+    {
+      "type": "Credit Card Fraud",
+      "reports": 416000
+    },
+    {
+      "type": "Bank Fraud",
+      "reports": 140000
+    },
+    {
+      "type": "Loan or Lease Fraud",
+      "reports": 115000
+    },
+    {
+      "type": "Government Documents",
+      "reports": 98000
+    },
+    {
+      "type": "Phone or Utilities",
+      "reports": 87000
+    }
+  ]
+}

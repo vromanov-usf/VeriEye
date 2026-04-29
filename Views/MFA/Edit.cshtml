@@ -1,0 +1,38 @@
+﻿@model VeriEye.Models.MFAMethod
+
+@{
+    ViewData["Title"] = "Edit MFA Method";
+}
+
+<section class="container py-5">
+    <div class="content-panel mx-auto" style="max-width: 600px;">
+        <h1 class="mb-4">Edit MFA Method</h1>
+
+        <form asp-action="Edit" method="post">
+            <input asp-for="MFAMethodId" type="hidden" />
+
+            <div class="mb-3">
+                <label asp-for="MethodType" class="form-label"></label>
+                <select asp-for="MethodType" class="form-control">
+                    <option>Iris Scan</option>
+                    <option>SMS Code</option>
+                    <option>Authenticator App</option>
+                    <option>Email OTP</option>
+                </select>
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="IsEnabled" class="form-check-input" />
+                <label asp-for="IsEnabled" class="form-check-label"></label>
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="IsDefault" class="form-check-input" />
+                <label asp-for="IsDefault" class="form-check-label"></label>
+            </div>
+
+            <button type="submit" class="btn btn-glow">Update</button>
+            <a asp-action="Index" class="btn btn-soft">Cancel</a>
+        </form>
+    </div>
+</section>

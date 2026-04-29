@@ -1,0 +1,39 @@
+﻿@model List<VeriEye.Models.BankAccess>
+
+@{
+    ViewData["Title"] = "Bank Access";
+}
+
+<section class="container-fluid px-5 py-5">
+    <div class="dashboard-card">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Bank Access</h1>
+            <a asp-action="Create" class="btn btn-glow">Add Bank Access</a>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Institution</th>
+                    <th>Access Level</th>
+                    <th>Active</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.InstitutionName</td>
+                        <td>@item.AccessLevel</td>
+                        <td>@item.IsActive</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.BankAccessId" class="btn btn-sm btn-outline-primary">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.BankAccessId" class="btn btn-sm btn-outline-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>

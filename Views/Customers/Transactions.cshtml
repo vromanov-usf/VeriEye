@@ -1,0 +1,53 @@
+﻿@model List<VeriEye.Models.VeriTransaction>
+
+@{
+    ViewData["Title"] = "VeriTransactions";
+}
+<div class="page-back">
+    <a asp-controller="Customers"
+       asp-action="Dashboard"
+       class="back-btn">
+        ← Back to Portal
+    </a>
+</div>
+<section class="premium-section transactions-page">
+
+    <div class="section-heading">
+        <p class="eyebrow">Secure Payment History</p>
+        <h2>VeriTransactions</h2>
+        <p>
+            Review recent identity verifications, VeriEyePay approvals,
+            login activity, and transactions requiring additional verification.
+        </p>
+    </div>
+
+    <div class="transaction-table-card">
+        <table class="transaction-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Merchant / Source</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Risk</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Date</td>
+                        <td>@item.Merchant</td>
+                        <td>@item.Type</td>
+                        <td>@item.Amount</td>
+                        <td><span class="status-pill">@item.Status</span></td>
+                        <td><span class="risk-pill">@item.RiskLevel</span></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</section>

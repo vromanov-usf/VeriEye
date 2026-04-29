@@ -1,0 +1,38 @@
+﻿@model VeriEye.Models.BankAccess
+
+@{
+    ViewData["Title"] = "Edit Bank Access";
+}
+
+<section class="container py-5">
+    <div class="content-panel mx-auto" style="max-width: 700px;">
+        <h1 class="mb-4">Edit Bank Access</h1>
+
+        <form asp-action="Edit" method="post">
+            <input asp-for="BankAccessId" type="hidden" />
+
+            <div class="mb-3">
+                <label asp-for="InstitutionName" class="form-label"></label>
+                <input asp-for="InstitutionName" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="AccessLevel" class="form-label"></label>
+                <select asp-for="AccessLevel" class="form-control">
+                    <option>Full Access</option>
+                    <option>Transaction Access</option>
+                    <option>Read Only</option>
+                    <option>Verification Only</option>
+                </select>
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="IsActive" class="form-check-input" />
+                <label asp-for="IsActive" class="form-check-label"></label>
+            </div>
+
+            <button type="submit" class="btn btn-glow">Update</button>
+            <a asp-action="Index" class="btn btn-soft">Cancel</a>
+        </form>
+    </div>
+</section>

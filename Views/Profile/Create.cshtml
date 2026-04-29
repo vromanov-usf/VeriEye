@@ -1,0 +1,40 @@
+﻿@model VeriEye.Models.UserProfile
+
+@{
+    ViewData["Title"] = "Add Profile";
+}
+
+<section class="container py-5">
+    <div class="content-panel mx-auto" style="max-width: 700px;">
+        <h1 class="mb-4">Add Profile</h1>
+
+        <form asp-action="Create" method="post">
+            <div class="mb-3">
+                <label asp-for="FullName" class="form-label"></label>
+                <input asp-for="FullName" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Phone" class="form-label"></label>
+                <input asp-for="Phone" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Status" class="form-label"></label>
+                <select asp-for="Status" class="form-control">
+                    <option>Active</option>
+                    <option>Inactive</option>
+                    <option>Pending</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-glow">Save</button>
+            <a asp-action="Index" class="btn btn-soft">Cancel</a>
+        </form>
+    </div>
+</section>

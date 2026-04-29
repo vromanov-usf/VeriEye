@@ -1,0 +1,19 @@
+﻿@model VeriEye.Models.ErrorViewModel
+
+@{
+    ViewData["Title"] = "Error";
+}
+
+<section class="container py-5">
+    <div class="content-panel mx-auto" style="max-width: 700px;">
+        <h1 class="text-danger">Something went wrong.</h1>
+        <p>An error occurred while processing your request.</p>
+
+        @if (Model.ShowRequestId)
+        {
+            <p>
+                <strong>Request ID:</strong> <code>@Model.RequestId</code>
+            </p>
+        }
+    </div>
+</section>

@@ -1,0 +1,47 @@
+﻿@model List<VeriEye.Models.MFAMethod>
+
+@{
+    ViewData["Title"] = "Manage MFA";
+}
+<div class="page-back">
+    <a asp-controller="Customers"
+       asp-action="Dashboard"
+       class="back-btn">
+        ← Back to Portal
+    </a>
+</div>
+<section class="container-fluid px-5 py-5">
+    <div class="dashboard-card">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Manage MFA</h1>
+            <a asp-action="Create" class="btn btn-glow">Add MFA Method</a>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Method Type</th>
+                    <th>Enabled</th>
+                    <th>Default</th>
+                    <th>Date Added</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.MethodType</td>
+                        <td>@item.IsEnabled</td>
+                        <td>@item.IsDefault</td>
+                        <td>@item.DateAdded.ToShortDateString()</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.MFAMethodId" class="btn btn-sm btn-outline-primary">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.MFAMethodId" class="btn btn-sm btn-outline-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>

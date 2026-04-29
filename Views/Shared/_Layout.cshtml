@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - VeriEye</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body>
+    <header class="verieye-navbar">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid px-4">
+
+                <a class="navbar-brand brand-logo" href="/#home">
+                    <span class="brand-dot"></span>
+                    <span>VeriEye</span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#verieyeNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="verieyeNavbar">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                        <li class="nav-item"><a class="nav-link" href="/#what-is-verieye">What is VeriEye?</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/#how-it-works">How It Works</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/#fraud-dashboard">Fraud Insights</a></li>
+                        <a class="nav-link" href="/#personal">Personal</a>
+                        <a class="nav-link" href="/#merchant-solutions">Merchant Solutions</a>
+                        <a class="nav-link" href="/#financial-institutions">Financial Institutions</a>
+                        <a class="nav-link" asp-controller="Home" asp-action="About">About Us</a>
+                        </li>
+                       <a asp-controller="Account"
+   asp-action="Login"
+   class="nav-cta">
+   Login / Sign Up
+</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/js/fraud-insights.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<section class="auth-shell">
+
+    <div class="auth-left">
+        <p class="eyebrow">CREATE ACCOUNT</p>
+        <h1>Create your VeriEye profile.</h1>
+        <p>
+            Join the next generation of secure payments with biometric identity protection.
+        </p>
+    </div>
+
+    <div class="auth-panel">
+        <div class="auth-tabs">
+            <a asp-controller="Account" asp-action="Login" class="tab-btn">
+                Login
+            </a>
+
+            <a asp-controller="Account" asp-action="Signup" class="tab-btn active">
+                Sign Up
+            </a>
+        </div>
+
+        <form asp-controller="Account" asp-action="Signup" method="post">
+
+            <label>Full Name</label>
+            <input name="fullName" type="text" placeholder="Enter full name" />
+
+            <label>Email</label>
+            <input name="email" type="email" placeholder="Enter email" />
+
+            <label>Password</label>
+            <input name="password" type="password" placeholder="Create password" />
+
+            <label>Confirm Password</label>
+            <input name="confirmPassword" type="password" placeholder="Confirm password" />
+
+            <button type="submit" class="btn-main full-btn">
+                Create VeriEye Profile
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
