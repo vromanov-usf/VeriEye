@@ -232,6 +232,21 @@
                 secure transfers, and fraud prevention.
             </p>
         </div>
+        <div class="fdic-map-box">
+            <div class="fdic-map-header">
+                <h2>Find nearby FDIC-insured banks</h2>
+                <p>
+                    VeriEye connects identity verification with FDIC-insured bank branches to support secure onboarding, account servicing, and in-person verification.
+                </p>
+            </div>
+
+            <div class="fdic-search-box">
+                <input id="bankState" type="text" value="FL" placeholder="Enter state abbreviation, ex: FL" />
+                <button onclick="loadBankLocations()">Search Nearby Banks</button>
+            </div>
+
+            <div id="bankResults" class="bank-results"></div>
+        </div>
 
         <div class="solution-grid">
             <div class="solution-card"><span>01</span><h3>Stronger KYC</h3><p>Confirms identity during onboarding.</p></div>
@@ -246,13 +261,122 @@
     </div>
 </section>
 
-<section class="final-cta">
-    <p class="eyebrow light">The Future of Payments</p>
-    <h2>Identity-first payments start with VeriEye.</h2>
-    <p>A secure iris authentication layer for consumers, merchants, and financial institutions.</p>
+<script>
+    async function loadBankLocations() {
+        const input = document.getElementById("bankState").value.trim();
+        const resultsDiv = document.getElementById("bankResults");
+
+        if (!input) {
+            resultsDiv.innerHTML = "<p>Please enter a city, state, or ZIP code.</p>";
+            return;
+        }
+
+        resultsDiv.innerHTML = "<p>Searching nearby banks...</p>";
+
+        let apiUrl;
+
+        // ZIP CODE (5 digits)
+        if (/^\d{5}$/.test(input)) {
+            apiUrl = `https://api.fdic.gov/banks/locations?filters=ZIP:${input}&fields=NAME,ADDRESS,CITY,STALP,ZIP,LATITUDE,LONGITUDE&limit=8&format=json`;
+        }
+
+        // STATE (2 letters)
+        else if (/^[a-zA-Z]{2}$/.test(input)) {
+            apiUrl = `https://api.fdic.gov/banks/locations?filters=STALP:${input.toUpperCase()}&fields=NAME,ADDRESS,CITY,STALP,ZIP,LATITUDE,LONGITUDE&limit=8&format=json`;
+        }
+
+        // CITY (anything else)
+        else {
+            apiUrl = `https://api.fdic.gov/banks/locations?filters=CITY:${input}&fields=NAME,ADDRESS,CITY,STALP,ZIP,LATITUDE,LONGITUDE&limit=8&format=json`;
+        }
+
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+
+            if (!data.data || data.data.length === 0) {
+                resultsDiv.innerHTML = "<p>No bank locations found.</p>";
+                return;
+            }
+
+            resultsDiv.innerHTML = data.data.map(item => {
+                const bank = item.data;
+
+                const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${bank.LATITUDE},${bank.LONGITUDE}`;
+
+                return `
+                    <div class="bank-card">
+                        <h3>${bank.NAME || "Bank Name Unavailable"}</h3>
+                        <p>${bank.ADDRESS || ""}</p>
+                        <p>${bank.CITY || ""}, ${bank.STALP || ""} ${bank.ZIP || ""}</p>
+                        <a href="${mapsUrl}" target="_blank">View on Map</a>
+                    </div>
+                `;
+            }).join("");
+
+        } catch (error) {
+            console.error(error);
+            resultsDiv.innerHTML = "<p>Error loading bank data.</p>";
+        }
+    }
+</script>
+
+<section style="
+    width: min(1550px, calc(100% - 140px));
+    margin: 55px auto 70px;
+    padding: 70px 50px;
+    border-radius: 34px;
+    background: linear-gradient(135deg, #12094f 0%, #2d1b87 45%, #7b4dff 100%);
+    text-align: center;
+    box-shadow: 0 28px 70px rgba(26, 18, 97, 0.20);
+    ">
+
+    <p style="
+        color: rgba(255,255,255,0.82);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 7px;
+        text-transform: uppercase;
+        margin-bottom: 22px;
+        ">
+        THE FUTURE OF PAYMENTS
+    </p>
+
+    <h2 style="
+        color: white;
+        font-size: clamp(44px, 5vw, 78px);
+        line-height: 1.02;
+        font-weight: 900;
+        margin: 0 auto 20px;
+        max-width: 1200px;
+        ">
+        Identity-first payments start with VeriEye.
+    </h2>
+
+    <p style="
+        color: rgba(255,255,255,0.92);
+        font-size: 17px;
+        margin-bottom: 30px;
+        ">
+        A secure iris authentication layer for consumers, merchants, and financial institutions.
+    </p>
+
     <a asp-controller="Account"
        asp-action="Login"
-       class="hero-cta-btn">
+       style="
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 34px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #8f63ff, #5e32ff);
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 800;
+        box-shadow: 0 16px 32px rgba(0,0,0,0.18);
+        ">
         Access Customer Portal
     </a>
+
 </section>

@@ -1400,3 +1400,207 @@ header {
     .portal-back-btn:hover {
         transform: translateY(-1px);
         color: #080637;
+
+
+        .fdic-section {
+            margin-top: 80px;
+            padding: 50px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, #f7f8ff, #eef2ff);
+            box-shadow: 0 20px 60px rgba(20, 25, 80, 0.08);
+        }
+
+            .fdic-section h2 {
+                font-size: 36px;
+                color: #070b45;
+                margin-bottom: 10px;
+            }
+
+            .fdic-section p {
+                color: #66709a;
+            }
+
+        .fdic-search-box {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+            .fdic-search-box input {
+                padding: 16px 20px;
+                border: 1px solid #d8dcff;
+                border-radius: 16px;
+                width: 280px;
+                font-size: 16px;
+            }
+
+            .fdic-search-box button {
+                padding: 16px 26px;
+                border: none;
+                border-radius: 16px;
+                background: linear-gradient(135deg, #6d4cff, #8b5cf6);
+                color: white;
+                font-weight: 700;
+                cursor: pointer;
+            }
+
+        .bank-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .bank-card {
+            background: white;
+            padding: 24px;
+            border-radius: 22px;
+            border: 1px solid #e1e5ff;
+            box-shadow: 0 12px 35px rgba(30, 35, 90, 0.08);
+        }
+
+            .bank-card h3 {
+                color: #070b45;
+                margin-bottom: 12px;
+            }
+
+        .fdic-map-box {
+            margin-top: 38px;
+            padding: 34px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, #f8f9ff, #eef3ff);
+            border: 1px solid #dfe4ff;
+            box-shadow: 0 24px 60px rgba(20, 18, 80, 0.08);
+        }
+
+        .fdic-map-header h2 {
+            font-size: 30px;
+            line-height: 1.1;
+            color: #09083f;
+            margin-bottom: 12px;
+        }
+
+        .fdic-map-header p {
+            max-width: 620px;
+            color: #68749c;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .fdic-search-box {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            margin-bottom: 26px;
+        }
+
+            .fdic-search-box input {
+                width: 170px;
+                padding: 15px 18px;
+                border-radius: 999px;
+                border: 1px solid #d8dcff;
+                background: white;
+                color: #09083f;
+                font-weight: 700;
+                outline: none;
+            }
+
+            .fdic-search-box button {
+                padding: 15px 24px;
+                border-radius: 999px;
+                border: none;
+                background: linear-gradient(135deg, #6d4cff, #8b5cf6);
+                color: white;
+                font-weight: 800;
+                box-shadow: 0 14px 30px rgba(109, 76, 255, 0.28);
+                cursor: pointer;
+                transition: 0.2s ease;
+            }
+
+                .fdic-search-box button:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 18px 35px rgba(109, 76, 255, 0.36);
+                }
+
+        .bank-results {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .bank-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #e2e6ff;
+            border-radius: 22px;
+            padding: 22px;
+            box-shadow: 0 16px 35px rgba(20, 25, 80, 0.08);
+        }
+
+            .bank-card h3 {
+                color: #09083f;
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            .bank-card p {
+                color: #68749c;
+                font-size: 14px;
+                margin-bottom: 6px;
+            }
+
+            .bank-card a {
+                display: inline-block;
+                margin-top: 10px;
+                padding: 10px 15px;
+                border-radius: 999px;
+                background: #f0edff;
+                color: #6d4cff;
+                font-weight: 800;
+                text-decoration: none;
+            }
+        /* =========================
+   IDENTITY CTA SECTION
+========================= */
+
+        .identity-cta-section {
+            width: min(1650px, calc(100% - 120px)) !important;
+            margin: 80px auto !important;
+            padding: 95px 60px !important;
+            border-radius: 38px !important;
+            background: linear-gradient(135deg, #12094f 0%, #2d1b87 45%, #7b4dff 100%) !important;
+            text-align: center !important;
+            box-shadow: 0 35px 90px rgba(26, 18, 97, 0.24) !important;
+        }
+
+        .identity-cta-kicker {
+            color: rgba(255,255,255,0.82) !important;
+            font-size: 14px !important;
+            font-weight: 800 !important;
+            letter-spacing: 8px !important;
+            text-transform: uppercase !important;
+            margin-bottom: 34px !important;
+        }
+
+        .identity-cta-section h2 {
+            color: #ffffff !important;
+            font-size: clamp(52px, 6vw, 96px) !important;
+            line-height: 1.02 !important;
+            font-weight: 900 !important;
+            margin: 0 auto 28px auto !important;
+        }
+
+        .identity-cta-subtitle {
+            color: #ffffff !important;
+            font-size: 18px !important;
+            margin-bottom: 44px !important;
+        }
+
+        .identity-cta-btn {
+            display: inline-flex !important;
+            padding: 20px 44px !important;
+            border-radius: 999px !important;
+            background: linear-gradient(135deg, #8f63ff, #5e32ff) !important;
+            color: #ffffff !important;
+            text-decoration: none !important;
+            font-size: 18px !important;
+            font-weight: 800 !important;
+        }
